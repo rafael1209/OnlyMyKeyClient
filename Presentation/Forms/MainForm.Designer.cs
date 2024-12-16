@@ -31,12 +31,14 @@
             label1 = new Label();
             pictureBox1 = new PictureBox();
             panel2 = new Panel();
+            button1 = new Button();
             panel1 = new Panel();
             btcEditPass = new Button();
             btnDeletePass = new Button();
             btnAddPass = new Button();
             panel3 = new Panel();
             dataGridView1 = new DataGridView();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
@@ -48,7 +50,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("TRY Clother", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label1.Location = new Point(57, 30);
+            label1.Location = new Point(56, 5);
             label1.Name = "label1";
             label1.Size = new Size(162, 22);
             label1.TabIndex = 1;
@@ -59,11 +61,14 @@
             pictureBox1.Location = new Point(6, 10);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(45, 42);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
             // panel2
             // 
+            panel2.Controls.Add(button2);
+            panel2.Controls.Add(button1);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(pictureBox1);
             panel2.Dock = DockStyle.Top;
@@ -71,6 +76,16 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(800, 62);
             panel2.TabIndex = 2;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(57, 30);
+            button1.Name = "button1";
+            button1.Size = new Size(73, 24);
+            button1.TabIndex = 2;
+            button1.Text = "Logout";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // panel1
             // 
@@ -109,6 +124,7 @@
             btnAddPass.TabIndex = 0;
             btnAddPass.Text = "Add";
             btnAddPass.UseVisualStyleBackColor = true;
+            btnAddPass.Click += btnAddPass_Click;
             // 
             // panel3
             // 
@@ -140,15 +156,29 @@
             dataGridView1.Size = new Size(800, 338);
             dataGridView1.TabIndex = 0;
             // 
+            // button2
+            // 
+            button2.Location = new Point(136, 30);
+            button2.Name = "button2";
+            button2.Size = new Size(73, 24);
+            button2.TabIndex = 3;
+            button2.Text = "Encryption";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             ClientSize = new Size(800, 450);
             Controls.Add(panel3);
             Controls.Add(panel1);
             Controls.Add(panel2);
+            MaximumSize = new Size(816, 489);
+            MinimumSize = new Size(816, 489);
             Name = "MainForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "OMK - Password Manager";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
@@ -169,5 +199,7 @@
         private Panel panel3;
         private Button btcEditPass;
         private DataGridView dataGridView1;
+        private Button button1;
+        private Button button2;
     }
 }
