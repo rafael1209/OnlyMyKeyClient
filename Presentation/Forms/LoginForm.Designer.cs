@@ -1,4 +1,4 @@
-﻿namespace OnlyMyKeyClient
+﻿namespace OnlyMyKeyClient.Presentation.Forms
 {
     partial class LoginForm
     {

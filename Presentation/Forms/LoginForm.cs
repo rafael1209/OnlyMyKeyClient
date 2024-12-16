@@ -2,7 +2,7 @@ using System.Diagnostics;
 using System.Net;
 using System.Text.Json;
 
-namespace OnlyMyKeyClient
+namespace OnlyMyKeyClient.Presentation.Forms
 {
     public partial class LoginForm : Form
     {

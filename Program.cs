@@ -1,3 +1,5 @@
+using OnlyMyKeyClient.Presentation.Forms;
+
 namespace OnlyMyKeyClient
 {
     internal static class Program
@@ -9,7 +11,7 @@ namespace OnlyMyKeyClient
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            Application.Run(new Forms.MainForm());
+            Application.Run(new MainForm());
         }
     }
 }
