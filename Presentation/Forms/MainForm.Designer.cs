@@ -31,14 +31,17 @@
             label1 = new Label();
             pictureBox1 = new PictureBox();
             panel2 = new Panel();
+            button2 = new Button();
             button1 = new Button();
             panel1 = new Panel();
+            textBox3 = new TextBox();
+            textBox2 = new TextBox();
+            textBox1 = new TextBox();
             btcEditPass = new Button();
             btnDeletePass = new Button();
             btnAddPass = new Button();
             panel3 = new Panel();
             dataGridView1 = new DataGridView();
-            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
@@ -77,6 +80,16 @@
             panel2.Size = new Size(800, 62);
             panel2.TabIndex = 2;
             // 
+            // button2
+            // 
+            button2.Location = new Point(713, 31);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 3;
+            button2.Text = "Keys";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
             // button1
             // 
             button1.Location = new Point(57, 30);
@@ -89,6 +102,9 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(textBox3);
+            panel1.Controls.Add(textBox2);
+            panel1.Controls.Add(textBox1);
             panel1.Controls.Add(btcEditPass);
             panel1.Controls.Add(btnDeletePass);
             panel1.Controls.Add(btnAddPass);
@@ -98,9 +114,33 @@
             panel1.Size = new Size(800, 50);
             panel1.TabIndex = 3;
             // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(218, 15);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(100, 23);
+            textBox3.TabIndex = 6;
+            textBox3.Text = "Note";
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(112, 15);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(100, 23);
+            textBox2.TabIndex = 4;
+            textBox2.Text = "Password";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(6, 15);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(100, 23);
+            textBox1.TabIndex = 3;
+            textBox1.Text = "Login";
+            // 
             // btcEditPass
             // 
-            btcEditPass.Location = new Point(551, 15);
+            btcEditPass.Location = new Point(405, 15);
             btcEditPass.Name = "btcEditPass";
             btcEditPass.Size = new Size(75, 23);
             btcEditPass.TabIndex = 2;
@@ -109,16 +149,18 @@
             // 
             // btnDeletePass
             // 
-            btnDeletePass.Location = new Point(632, 15);
+            btnDeletePass.Location = new Point(486, 15);
             btnDeletePass.Name = "btnDeletePass";
             btnDeletePass.Size = new Size(75, 23);
             btnDeletePass.TabIndex = 1;
             btnDeletePass.Text = "Delete";
             btnDeletePass.UseVisualStyleBackColor = true;
+            btnDeletePass.Visible = false;
+            btnDeletePass.Click += btnDeletePass_Click;
             // 
             // btnAddPass
             // 
-            btnAddPass.Location = new Point(713, 15);
+            btnAddPass.Location = new Point(324, 15);
             btnAddPass.Name = "btnAddPass";
             btnAddPass.Size = new Size(75, 23);
             btnAddPass.TabIndex = 0;
@@ -139,7 +181,6 @@
             // 
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AllowUserToOrderColumns = true;
             dataGridView1.AllowUserToResizeColumns = false;
             dataGridView1.AllowUserToResizeRows = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -150,21 +191,15 @@
             dataGridView1.Location = new Point(0, 0);
             dataGridView1.MaximumSize = new Size(800, 338);
             dataGridView1.MinimumSize = new Size(800, 338);
+            dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(800, 338);
             dataGridView1.TabIndex = 0;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(136, 30);
-            button2.Name = "button2";
-            button2.Size = new Size(73, 24);
-            button2.TabIndex = 3;
-            button2.Text = "Encryption";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
             // 
             // MainForm
             // 
@@ -184,6 +219,7 @@
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
@@ -200,6 +236,9 @@
         private Button btcEditPass;
         private DataGridView dataGridView1;
         private Button button1;
+        private TextBox textBox1;
+        private TextBox textBox3;
+        private TextBox textBox2;
         private Button button2;
     }
 }

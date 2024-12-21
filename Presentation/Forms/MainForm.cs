@@ -2,6 +2,8 @@
 using OnlyMyKeyClient.Infrastructure.API;
 using OnlyMyKeyClient.Infrastructure.Security;
 using OnlyMyKeyClient.Infrastructure.Storage;
+using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace OnlyMyKeyClient.Presentation.Forms
 {
@@ -106,9 +108,12 @@ namespace OnlyMyKeyClient.Presentation.Forms
             label1.Text = userData.Username;
         }
 
-        private void btnAddPass_Click(object sender, EventArgs e)
+        private async void btnAddPass_Click(object sender, EventArgs e)
         {
+            await _apiService.CreatePasswordAsync(textBox1.Text,
+                EncryptionHelper.Encrypt(textBox2.Text), textBox3.Text);
 
+            UpdateDataGrid();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -123,11 +128,41 @@ namespace OnlyMyKeyClient.Presentation.Forms
             loginForm.FormClosed += (s, e) => this.Close();
         }
 
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            btnDeletePass.Visible = dataGridView1.CurrentRow != null;
+        }
+
+        private async void btnDeletePass_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+                int rowIndex = dataGridView1.CurrentRow.Index;
+
+                await _apiService.DeletePasswordByIndexAsync(rowIndex);
+
+                UpdateDataGrid();
+
+                btnDeletePass.Visible = false;
+            }
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
-            var test = "gobnik125";
-            var encrypted = EncryptionHelper.Encrypt(test);
-            var decrypted = EncryptionHelper.Decrypt(encrypted);
+            try
+            {
+                string folderPath = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "OnlyMyKey");
+
+                if (Directory.Exists(folderPath))
+                {
+                    Process.Start("explorer.exe", folderPath);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

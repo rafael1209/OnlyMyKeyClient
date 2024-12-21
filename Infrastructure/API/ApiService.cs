@@ -94,5 +94,48 @@ namespace OnlyMyKeyClient.Infrastructure.API
                 return null;
             }
         }
+
+        public async Task<bool> CreatePasswordAsync(string login, string password, string note)
+        {
+            try
+            {
+                _httpClient.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue(TokenStorage.TryLoadToken("token"));
+
+                var payload = new
+                {
+                    login,
+                    password,
+                    note
+                };
+
+                var content = new StringContent(JsonSerializer.Serialize(payload), Encoding.UTF8, "application/json");
+
+                var response = await _httpClient.PostAsync(BaseApiUrl + "/api/password", content);
+
+                return response.IsSuccessStatusCode;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> DeletePasswordByIndexAsync(int index)
+        {
+            try
+            {
+                _httpClient.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue(TokenStorage.TryLoadToken("token"));
+
+                var response = await _httpClient.DeleteAsync($"{BaseApiUrl}/api/password/{index}");
+
+                return response.IsSuccessStatusCode;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }
