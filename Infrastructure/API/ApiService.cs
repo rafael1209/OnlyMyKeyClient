@@ -14,7 +14,7 @@ namespace OnlyMyKeyClient.Infrastructure.API
     public class ApiService
     {
         private readonly HttpClient _httpClient = new();
-        private const string BaseApiUrl = "https://onlymykeybackend20241216184550.azurewebsites.net";
+        private const string BaseApiUrl = "https://omk.chasman.engineer";
 
         public async Task<UserData?> GetUserDataAsync(string authToken)
         {
